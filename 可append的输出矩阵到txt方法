@@ -1,0 +1,50 @@
+//主函数
+public static void main(String[] args){
+    //调用方法
+    outputMatrixToTXT(NumberOfTrainSet,NumberOfAllFeatures,value10,"D:/LaPose/justAtest.txt");
+}
+
+
+
+//输出矩阵到txt
+	public static void outputMatrixToTXT(int NumberOfTrainSet,
+			int NumberOfAllFeatures,Integer[][] value,String filepath) throws IOException{
+		
+		  File file = new File(filepath);  			  
+		  FileWriter out = new FileWriter(file);  
+		 		  
+		  for(int i=0;i<NumberOfTrainSet;i++){
+		   for(int j=0;j<NumberOfAllFeatures;j++){
+		    out.write(value[i][j]+" ");//将数组中的数据写入到文件中。每行各数据之间TAB间隔
+		   }
+		   out.write("\r\n");
+		  }
+		  out.close();
+		  try {
+				append(NumberOfTrainSet,NumberOfAllFeatures,filepath, value);		
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		  
+		  
+	}//end of outputMatrixToTXT
+	
+	
+	
+	//append函数
+	public static void append(int NumberOfTrainSet,int NumberOfAllFeatures,
+										  String path, Integer[][] value)throws IOException {
+		BufferedWriter bw = new BufferedWriter(new FileWriter(new File(path),true));
+		
+		for(int i=0;i<NumberOfTrainSet;i++){
+			for(int j=0;j<NumberOfAllFeatures;j++){
+				bw.write(value[i][j]+" ");
+			}
+			bw.write("\r\n");
+		}
+		bw.flush();
+		bw.close();
+
+		
+	}
+	
