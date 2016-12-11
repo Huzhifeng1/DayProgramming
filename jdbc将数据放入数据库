@@ -4,7 +4,8 @@
 		 try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8",
-					"root", "password");
+										       //数据库名					
+"root", "password");
 		 stmt = conn.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
